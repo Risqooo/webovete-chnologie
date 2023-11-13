@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Váš Web</title>
+    <title>Kontakt - Váš Web</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,7 +21,21 @@
     </header>
 
     <main>
-        <!-- Obsah hlavní stránky -->
+        <h2>Kontaktujte nás</h2>
+        <p>Pro více informací nebo dotazy nás neváhejte kontaktovat pomocí níže uvedeného formuláře.</p>
+        
+        <form action="odeslano.html" method="post">
+            <label for="jmeno">Jméno:</label>
+            <input type="text" id="jmeno" name="jmeno" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="zprava">Zpráva:</label>
+            <textarea id="zprava" name="zprava" required></textarea>
+
+            <input type="submit" value="Odeslat">
+        </form>
     </main>
 
     <footer>
