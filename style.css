@@ -34,6 +34,16 @@ nav ul li a {
     text-decoration: none;
 }
 
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+nav ul li a.active {
+    color: #e089b2c4;
+    font-weight: bold;
+}
+
+
 main {
     flex: 1;
     max-width: 80%;
