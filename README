@@ -1,3 +1,27 @@
-# 4IZ268 Web Technologies Class Repository
+# Richard Baško - Osobná webová stránka
 
-Welcome to the GitHub repository for the 4IZ268 Web Technologies class. This repository is designed to help students collaborate, share resources, and access important information related to the course. Please make sure to read this README file carefully to understand how to use this repository effectively.
+Vitajte na mojej osobnej webovej stránke! Táto stránka slúži na prezentáciu mojej profesnej kariéry, projektov, koníčkov a certifikátov v oblasti kybernetickej bezpečnosti.
+
+## O stránke
+
+Stránka bola vytvorená pre predmet **4IZ268 Webové technológie** ako súčasť výučby na Vysoké škole ekonomické v Prahe. Cieľom stránky je poskytnúť prehľad o mojich pracovných skúsenostiach, vzdelaní a záujmoch.
+
+## Obsah stránky
+
+- **Domov**: Úvodná stránka so stručným výkladom o mne.
+- **Práce**: Informácie o mojej práci ako cybersecurity consultant vo spoločnosti EY.
+- **Škola**: Prehľad o mojom vzdelaní a študentskej kariére na Vysoké škole ekonomické v Prahe.
+- **Koníčky**: Sekcia venovaná mojim koníčkom, vrátane hier, kybernetickej bezpečnosti, áut, hudby a technológií.
+- **Kontakt**: Kontaktné informácie pre možnosť nadviazania komunikácie.
+
+## Kódovanie a Technológie
+
+Stránka je vytvorená pomocou HTML a CSS. Styl stránky je upravený v súbore `style.css`. Projekt je súčasťou výučby webových technológií a slúži ako príklad tvorby osobnej webovej stránky.
+
+## Ako spustiť lokálne
+
+Ak chcete stránku spustiť lokálne, stačí sklonovať tento repozitár a otvoriť súbor `index.html` vo webovom prehliadači.
+
+```bash
+git clone https://github.com/Risqooo/webovete-chnologie.git
+cd webovete-chnologie
