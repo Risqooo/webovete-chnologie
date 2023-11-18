@@ -102,14 +102,19 @@ img {
 
 .image-container img {
     max-width: 100%;
-    border-radius: 10px; /* Zaoblené rohy */
+    border-radius: 10px;
 }
 
-/* Responzívny dizaj pre obrazovky menšie ako 800px */
 @media (max-width: 800px) {
     .image-container {
-        flex-direction: column; /* Obrázky budú pod sebou */
+        flex-direction: column;
     }
+}
+
+iframe.mapa {
+    max-width: ;
+    border: 1px solid #333333;
+    border-radius: 10px;
 }
 
 section ul {
