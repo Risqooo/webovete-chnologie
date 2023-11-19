@@ -1,0 +1,27 @@
+{
+    "name": "Webová stránka Richarda Baška",
+    "short_name": "RB Web",
+    "description": "Osobná webová stránka s informáciami o práci, škole, koníčkoch a kontaktoch.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f4f4f4",
+    "theme_color": "#333",
+    "icons": [
+      {
+        "src": "favicon/apple-touch-icon.png",
+        "sizes": "180x180",
+        "type": "image/png"
+      },
+      {
+        "src": "favicon/favicon-32x32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      },
+      {
+        "src": "favicon/favicon-16x16.png",
+        "sizes": "16x16",
+        "type": "image/png"
+      }
+    ]
+  }
+  
