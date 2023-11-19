@@ -89,7 +89,6 @@ img.logo {
 img {
     display: block;
     max-width: 100%;
-    width: auto;
     margin: 0 auto;
     border-radius: 5%;
 }
