@@ -1,0 +1,41 @@
+# Projekt Web a Blackjack
+
+Vitajte v repozitári projektu zameraného na webové technológie obsahujúci osobnú stránku a hru Blackjack v jazyku JavaScript.
+
+## Obsah
+
+1. [Popis](#popis)
+2. [Osobná stránka](#osobna-stranka)
+3. [Blackjack hra](#blackjack-hra)
+4. [Inštalácia a Spustenie](#instalacia-a-spustenie)
+5. [Prispievanie](#prispievanie)
+
+## Popis
+
+Tento repozitár slúži ako zdroj pre dva hlavné projekty: osobnú stránku a hru Blackjack. Cieľom projektu je demonštrovať použitie moderných webových technológií na vytvorenie dynamickej osobnej stránky a interaktívnej hry.
+
+## Osobná stránka
+
+Osobná stránka je vyvinutá s využitím HTML, CSS a JavaScript. Obsahuje informácie o autorovi, jeho projektoch a zručnostiach. Stránka je responsívna, prispôsobuje sa rôznym zariadeniam a je optimalizovaná pre vysoký výkon.
+
+## Blackjack hra
+
+Blackjack je klasická karetná hra, ktorú možno hrať priamo na webovej stránke. Hra je implementovaná v jazyku JavaScript a využíva moderné webové technológie pre dynamické zobrazovanie herného prostredia a interakcie s hráčom.
+
+## Inštalácia a Spustenie
+
+Pre inštaláciu a spustenie projektu postupujte nasledovne:
+
+1. Klonujte tento repozitár na svoje lokálne zariadenie.
+2. Otvorte osobnú stránku otvorením súboru `index.html` vo vašom webovom prehliadači.
+3. Pre spustenie Blackjack hry, otvorte súbor `blackjack.html` vo vašom webovom prehliadači.
+
+## Prispievanie
+
+Ak máte nápady na vylepšenia alebo chcete prispieť k projektu, slobodne vytvorte pull request. Vaše príspevky sú vítané!
+
+Dúfame, že sa vám projekt páči a že nájdete hodnotu v našej práci. Ďakujeme za vašu podporu!
+
+---
+
+*Autor: Richard Baško*
