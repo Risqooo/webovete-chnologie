@@ -139,3 +139,52 @@ footer {
     background: #333;
     color: #fff;
 }
+
+@media print {
+    body {
+      font-size: 12pt;
+    }
+  
+    header, footer, nav {
+      display: none;
+    }
+  
+    main {
+      max-width: 100%;
+      margin: 0;
+    }
+  
+    main h2, main h3, main p {
+      text-align: left;
+    }
+  
+    main.column {
+      width: 100%;
+    }
+  
+    .education {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    section ul {
+      text-align: left;
+    }
+  
+    section ul li {
+      margin-bottom: 5px;
+    }
+  
+    img.logo, img {
+      border-radius: 0;
+    }
+  
+    .image-container {
+      flex-direction: column;
+    }
+  
+    iframe.mapa {
+      border-radius: 0;
+    }
+  }
+  
