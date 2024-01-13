@@ -1,164 +1,137 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const suits = ["H", "D", "C", "S"];
+    const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+    let deck = [];
+    let playerHand = [];
+    let dealerHand = [];
+    let isPlayerTurn = true;
+    let gameStatus = "";
 
-let dealerSum = 0;
-let yourSum = 0;
+    function initGame() {
+        deck = createDeck();
+        shuffleDeck(deck);
+        playerHand = [drawCard(), drawCard()];
+        dealerHand = [drawCard(), drawCard()];
+        isPlayerTurn = true;
+        gameStatus = "Your turn";
+        updateDisplay();
+        checkForBlackjack();
+    }
 
-let dealerAceCount = 0;
-let yourAceCount = 0;
+    function createDeck() {
+        let deck = [];
+        for (let suit of suits) {
+            for (let value of values) {
+                deck.push(value + "-" + suit);
+            }
+        }
+        return deck;
+    }
 
-let hidden;
-let deck;
-
-let canHit = true; //allows the player (you) to draw while yourSum <= 21
-
-window.onload = function () {
-    buildDeck();
-    shuffleDeck();
-    startGame();
-}
-
-function buildDeck() {
-    let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-    let types = ["C", "D", "H", "S"];
-    deck = [];
-
-    for (let i = 0; i < types.length; i++) {
-        for (let j = 0; j < values.length; j++) {
-            deck.push(values[j] + "-" + types[i]); //A-C -> K-C, A-D -> K-D
+    function shuffleDeck(deck) {
+        for (let i = deck.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [deck[i], deck[j]] = [deck[j], deck[i]];
         }
     }
-}
 
-function shuffleDeck() {
-    for (let i = 0; i < deck.length; i++) {
-        let j = Math.floor(Math.random() * deck.length); // (0-1) * 52 => (0-51.9999)
-        let temp = deck[i];
-        deck[i] = deck[j];
-        deck[j] = temp;
-    }
-}
-
-function startGame() {
-    hidden = deck.pop();
-    dealerSum += getValue(hidden);
-    dealerAceCount += checkAce(hidden);
-
-    while (dealerSum < 17) {
-        let cardImg = document.createElement("img");
-        let card = deck.pop();
-        cardImg.src = "./cards/" + card + ".png";
-        dealerSum += getValue(card);
-        dealerAceCount += checkAce(card);
-        document.getElementById("dealer-cards").append(cardImg);
+    function drawCard() {
+        return deck.pop();
     }
 
-    for (let i = 0; i < 2; i++) {
-        let cardImg = document.createElement("img");
-        let card = deck.pop();
-        cardImg.src = "./cards/" + card + ".png";
-        yourSum += getValue(card);
-        yourAceCount += checkAce(card);
-        document.getElementById("your-cards").append(cardImg);
+    function updateDisplay() {
+        document.getElementById("player-cards").innerHTML = renderHand(playerHand);
+        document.getElementById("player-value").textContent = "Player's Value: " + calculateHandValue(playerHand);
+        document.getElementById("dealer-cards").innerHTML = renderHand(dealerHand, isPlayerTurn);
+        document.getElementById("dealer-value").textContent = isPlayerTurn ? "Dealer's Value: ?" : "Dealer's Value: " + calculateHandValue(dealerHand);
+        document.getElementById("game-status").textContent = gameStatus;
+    }
+    
+
+    function renderHand(hand, hideSecondCard = false) {
+        return hand.map((card, index) => {
+            if (index === 1 && hideSecondCard) {
+                return `<img src='cards/BACK.png' />`;
+            } else {
+                return `<img src='cards/${card}.png' />`;
+            }
+        }).join("");
     }
 
-    document.getElementById("hit").addEventListener("click", hit);
-    document.getElementById("stay").addEventListener("click", stay);
-}
+    document.getElementById("hit-button").addEventListener("click", function() {
+        if (isPlayerTurn) {
+            playerHand.push(drawCard());
+            if (calculateHandValue(playerHand) > 21) {
+                gameStatus = "Player busts!";
+                isPlayerTurn = false;
+            }
+            updateDisplay();
+        }
+    });
 
-function hit() {
-    if (!canHit) {
-        return;
+    document.getElementById("stand-button").addEventListener("click", function() {
+        if (isPlayerTurn) {
+            isPlayerTurn = false;
+            dealerTurn();
+        }
+    });
+
+    document.getElementById("new-game-button").addEventListener("click", function() {
+        initGame();
+    });
+
+    function dealerTurn() {
+        while (calculateHandValue(dealerHand) < 17) {
+            dealerHand.push(drawCard());
+        }
+        endGame();
     }
 
-    let cardImg = document.createElement("img");
-    let card = deck.pop();
-    cardImg.src = "./cards/" + card + ".png";
-    yourSum += getValue(card);
-    yourAceCount += checkAce(card);
-    document.getElementById("your-cards").append(cardImg);
-
-    if (reduceAce(yourSum, yourAceCount) > 21) {
-        canHit = false;
-    }
-}
-
-function stay() {
-    dealerSum = reduceAce(dealerSum, dealerAceCount);
-    yourSum = reduceAce(yourSum, yourAceCount);
-
-    canHit = false;
-    document.getElementById("hidden").src = "./cards/" + hidden + ".png";
-
-    let message = "";
-    if (yourSum > 21) {
-        message = "You Lose!";
-    }
-    else if (dealerSum > 21) {
-        message = "You win!";
-    }
-    else if (yourSum == dealerSum) {
-        message = "Tie!";
-    }
-    else if (yourSum > dealerSum) {
-        message = "You Win!";
-    }
-    else if (yourSum < dealerSum) {
-        message = "You Lose!";
+    function endGame() {
+        let playerValue = calculateHandValue(playerHand);
+        let dealerValue = calculateHandValue(dealerHand);
+        if (playerValue > 21) {
+            gameStatus = "Player busts!";
+        } else if (dealerValue > 21) {
+            gameStatus = "Player wins!";
+        } else if (playerValue > dealerValue) {
+            gameStatus = "Player wins!";
+        } else if (playerValue < dealerValue) {
+            gameStatus = "Dealer wins!";
+        } else {
+            gameStatus = "It's a tie!";
+        }
+        updateDisplay();
     }
 
-    document.getElementById("dealer-sum").innerText = dealerSum;
-    document.getElementById("your-sum").innerText = yourSum;
-    document.getElementById("results").innerText = message;
-
-    if (yourSum > 21 || dealerSum > 21 || !canHit) {
-        document.getElementById("new-game").style.display = "block";
+    function calculateHandValue(hand) {
+        let value = 0;
+        let aceCount = 0;
+        for (let card of hand) {
+            let cardValue = card.split("-")[0];
+            if (cardValue === "A") {
+                aceCount++;
+                value += 11;
+            } else if (["J", "Q", "K"].includes(cardValue)) {
+                value += 10;
+            } else {
+                value += parseInt(cardValue);
+            }
+        }
+        while (value > 21 && aceCount > 0) {
+            value -= 10;
+            aceCount--;
+        }
+        return value;
     }
-}
 
-document.getElementById("new-game").addEventListener("click", function () {
-    document.getElementById("new-game").style.display = "none";
-    newGame();
+    function checkForBlackjack() {
+        if (calculateHandValue(playerHand) === 21) {
+            gameStatus = "Blackjack! Player wins!";
+            isPlayerTurn = false;
+            updateDisplay();
+        }
+    }
+
+    initGame();
 });
-
-function newGame() {
-    dealerSum = 0;
-    yourSum = 0;
-    dealerAceCount = 0;
-    yourAceCount = 0;
-    canHit = true;
-
-    document.getElementById("dealer-cards").innerHTML = "";
-    document.getElementById("your-cards").innerHTML = "";
-    document.getElementById("hidden").src = "";
-    document.getElementById("results").innerText = "";
-
-    startGame();
-}
-
-function getValue(card) {
-    let data = card.split("-");
-    let value = data[0];
-
-    if (isNaN(value)) {
-        if (value == "A") {
-            return 11;
-        }
-        return 10;
-    }
-    return parseInt(value);
-}
-
-function checkAce(card) {
-    if (card[0] == "A") {
-        return 1;
-    }
-    return 0;
-}
-
-function reduceAce(playerSum, playerAceCount) {
-    while (playerSum > 21 && playerAceCount > 0) {
-        playerSum -= 10;
-        playerAceCount -= 1;
-    }
-    return playerSum;
-}
-d

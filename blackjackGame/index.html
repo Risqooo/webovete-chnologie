@@ -1,26 +1,21 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Black Jack</title>
-        <link rel="stylesheet" href="blackjack.css">
-        <script src="blackjack.js"></script>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blackjack Game</title>
+    <link rel="stylesheet" type="text/css" href="blackjack.css">
 
-    <body>
-        <h2>Dealer: <span id="dealer-sum"></span></h2>
-        <div id="dealer-cards">
-            <img id="hidden" src="./cards/BACK.png">
-        </div>
+</head>
+<body>
+    <div id="dealer-cards"></div>
+    <div id="dealer-value"></div>
+    <div id="player-cards"></div>
+    <div id="player-value"></div>
+    <button id="hit-button">Hit</button>
+    <button id="stand-button">Stand</button>
+    <button id="new-game-button">New Game</button>
+    <div id="game-status"></div>
 
-        <h2>You: <span id="your-sum"></span></h2>
-        <div id="your-cards"></div>
-
-        <br>
-        <button id="hit">Hit</button>
-        <button id="stay">Stay</button>
-        <button id="new-game" style="display:none;">New Game</button>
-        <p id="results"></p>
-    </body>
+    <script src="blackjack.js"></script>
+</body>
 </html>

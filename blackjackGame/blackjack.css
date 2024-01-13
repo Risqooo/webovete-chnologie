@@ -1,28 +1,46 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #f3f3f3;
 }
 
-#dealer-cards img {
-    height: 175px;
-    width: 125px;
-    margin: 1px;
+#player-cards, #dealer-cards {
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 10px;
+    display: inline-block;
 }
 
-#your-cards img {
-    height: 175px;
-    width: 125px;
-    margin: 1px;
+img {
+    height: 100px;
+    margin: 5px;
 }
 
-#hit {
-    width: 100px;
-    height: 50px;
-    font-size: 20px;
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-#stay {
-    width: 100px;
-    height: 50px;
-    font-size: 20px;
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: default;
+}
+
+#game-status {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
 }
