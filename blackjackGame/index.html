@@ -1,35 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stránka v Príprave</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Black Jack</title>
+        <link rel="stylesheet" href="blackjack.css">
+        <script src="blackjack.js"></script>
+    </head>
 
-        h1 {
-            color: #333;
-        }
+    <body>
+        <h2>Dealer: <span id="dealer-sum"></span></h2>
+        <div id="dealer-cards">
+            <img id="hidden" src="./cards/BACK.png">
+        </div>
 
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 30px;
-        }
+        <h2>You: <span id="your-sum"></span></h2>
+        <div id="your-cards"></div>
 
-        p {
-            color: #777;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Stránka v Príprave</h1>
-    <img src="https://cdn.myshoptet.com/usr/www.duvlan.cz/user/shop/big/34379-1_detsky-elektricky-bager-actionbikes-d2811-01.jpg?63f34126" alt="Bager obrázok">
-    <p>Práve teraz pracujeme na vytvorení úžasnej stránky pre vás. Prosím, buďte trpezliví!</p>
-</body>
+        <br>
+        <button id="hit">Hit</button>
+        <button id="stay">Stay</button>
+        <button id="new-game" style="display:none;">New Game</button>
+        <p id="results"></p>
+    </body>
 </html>
