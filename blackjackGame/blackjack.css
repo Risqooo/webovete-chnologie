@@ -4,43 +4,55 @@ body {
     background-color: #f3f3f3;
 }
 
+#dealer-value,
+#game-status,
+#player-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+
 #player-cards, #dealer-cards {
     margin: 20px auto;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ccc;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.35);
     border-radius: 10px;
     display: inline-block;
 }
 
 img {
-    height: 100px;
+    height: 200px;
     margin: 5px;
 }
 
-button {
-    margin: 10px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
+img#hit-button {
+    width: 7%;
+    height: auto;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #0056b3;
+img#hit-button:hover {
+    opacity: 0.8;
 }
 
-button:disabled {
-    background-color: #cccccc;
-    cursor: default;
+img#stand-button {
+    width: 7%;
+    height: auto;
+    cursor: pointer;
 }
 
-#game-status {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #333;
+img#stand-button:hover {
+    opacity: 0.8;
+}
+
+img#new-game-button {
+    width: 7%;
+    height: auto;
+    cursor: pointer;
+}
+
+img#new-game-button:hover {
+    opacity: 0.8;
 }
